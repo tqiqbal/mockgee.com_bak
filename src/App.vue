@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <Header/>
-    <Home/>
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div> -->
+    <router-view/>
     <Footer/>
   </div>
 </template>
@@ -9,20 +13,13 @@
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
-import Home from './views/home/Home.vue'
-
 export default {
-  name: 'App',
   components: {
-    Header,
-    Home,
-    Footer
+     Header,
+     Footer
   }
 }
 </script>
 
-<style>
-#app {
-  margin-top: 10px;
-}
+<style lang="scss" src="./style/app.scss">
 </style>

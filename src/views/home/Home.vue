@@ -1,22 +1,29 @@
 <template>
   <div id="home">
     <Hero/>
-    <div class="container">
+    <IntroDescribe/>
+    <DescribeOne/>
+    <DescribeTwo/>
+    <DescribeThree/>
     <IntroductionSection/>
-    <DescribeSection/>
-    </div>
   </div>
 </template>
 
 <script>
 import Hero from './components/Hero.vue'
 import IntroductionSection from './components/IntroductionSection'
-import DescribeSection from './components/DescribeSection.vue'
+import IntroDescribe from './components/IntroDescribe'
+import DescribeOne from './components/DescribeOne.vue'
+import DescribeTwo from './components/DescribeTwo.vue'
+import DescribeThree from './components/DescribeThree.vue'
 export default {
   components: {
     Hero,
     IntroductionSection,
-    DescribeSection
+    IntroDescribe,
+    DescribeOne,
+    DescribeTwo,
+    DescribeThree
   }
 }
 </script>
