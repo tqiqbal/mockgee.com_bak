@@ -1,4 +1,4 @@
-name: Vue-CI
+name: Mockgee.com - CI/CD
 
 on: 
   push:
