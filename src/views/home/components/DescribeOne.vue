@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="column image">
-              <AppImage src="https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/mock_test_2xs4.png" width="300" height="150"/>
+              <AppImage src="https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/mock_test.png" width="300" height="150"/>
           </div>
         </div>
     </div>

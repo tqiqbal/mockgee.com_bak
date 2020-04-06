@@ -12,6 +12,9 @@
 <style lang="scss" scoped>
 .introduction {
   // margin: 0px 0px;
-  background-color: #e9f7f5;
+  background-color: #bae5e3;
+}
+.title {
+  color: #00d1b2;
 }
 </style>
