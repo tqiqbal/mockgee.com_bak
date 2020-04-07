@@ -10,7 +10,7 @@
           <h2 class="subtitle has-text-dark is-size-4 has-text-weight-bold">
            Create Mock APIs in seconds and increase developers productivity
           </h2>
-          <b-button type="is-light" @click="clickMe">Try Now</b-button>
+          <b-button type="is-light" @click="openApp">Try Now</b-button>
         </div>
         <div class="column">
           <div class="image" style="width: 400px; heigth: 200px;text-align: right;">
@@ -28,8 +28,18 @@
 <script>
 import AppImage from '../../../components/images/AppImage'
 export default {
+  data() {
+    return {
+      appURL: 'http://localhost:9000'
+    }
+  },
   components: {
     AppImage
+  },
+  methods: {
+    openApp() {
+      window.open(this.appURL)
+    }
   }
   
 }

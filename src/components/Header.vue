@@ -34,11 +34,13 @@
         </template>
 
         <template slot="end">
-            <b-navbar-item href="https://github.com/mockgee/mockgee">
-                <i class="fab fa-github"></i>
+            <b-navbar-item>
+                <a href="https://github.com/mockgee/mockgee" target="_blank">
+                <i class="fab fa-github fa-lg has-text-dark"></i>
+                </a>
             </b-navbar-item>
             <b-navbar-item>
-                <span class="has-text-primary has-text-weight-bold" style="font-size: 0.9em;">Version: 0.1.0</span>
+                <span class="has-text-info" style="font-size: 0.9em;">Version: 0.1.0</span>
             </b-navbar-item>
         </template>
     </b-navbar>

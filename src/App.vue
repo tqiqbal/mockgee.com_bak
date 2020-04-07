@@ -17,6 +17,9 @@ export default {
   components: {
      Header,
      Footer
+  },
+  created() {
+    document.title = 'Mockgee - Create Mock API in seconds'
   }
 }
 </script>
