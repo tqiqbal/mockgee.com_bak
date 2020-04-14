@@ -30,7 +30,7 @@ import AppImage from '../../../components/images/AppImage'
 export default {
   data() {
     return {
-      appURL: 'http://cloud.mockgee.com'
+      appURL: 'https://mockgee.herokuapp.com'
     }
   },
   components: {
