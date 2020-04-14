@@ -7,7 +7,7 @@
               Shorten Time to Production
             </div>
             <div class="subtitle">
-              Work more efficiently with Postman's API mock servers. Postman mocks support split-stack development so front-end and back-end developers can work in parallel and view responses without spinning up the back end.
+              Work more efficiently with Mockgee's API mock servers. Mockgee mocks support split-stack development so front-end and back-end developers can work in parallel and view responses without spinning up the back end.
             </div>
           </div>
           <div class="column image">

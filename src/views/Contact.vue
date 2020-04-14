@@ -1,12 +1,7 @@
 <template>
-  <section class="section contact">
-    <h1>This is an contact page</h1>
+  <section class="section about">
+    <div class="container">
+      <p class="subtitle has-text-centered">Development is in progress for this page.</p>
+    </div>
   </section>
 </template>
-
-<style scoped>
-.contact {
-  text-align:center;
-  min-height: 100vh;
-}
-</style>

@@ -1,12 +1,7 @@
 <template>
-  <section class="documentaion about">
-    <h1>This is an documentaion page</h1>
+  <section class="section about">
+    <div class="container">
+      <p class="subtitle has-text-centered">Development is in progress for this page.</p>
+    </div>
   </section>
 </template>
-
-<style scoped>
-.documentaion {
-  text-align:center;
-  min-height: 100vh;
-}
-</style>

@@ -4,10 +4,10 @@
         <div class="columns is-vcentered">
           <div class="column">
               <div class="title">
-              Shorten Time to Production
+              Support 100% Techincal Capbility
             </div>
             <div class="subtitle">
-              Work more efficiently with Postman's API mock servers. Postman mocks support split-stack development so front-end and back-end developers can work in parallel and view responses without spinning up the back end.
+              A mock should support the same transport protocols, schemas, etc as the actual API, and be. The mock API should be accessible exactly like the original service and not require any special tooling or libraries.
             </div>
           </div>
           <div class="column image">

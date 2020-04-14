@@ -7,8 +7,8 @@
           <h1 class="title has-text-light is-bold is-size-1 has-text-weight-bold">
            Mock APIs with Mockgee
           </h1>
-          <h2 class="subtitle has-text-dark is-size-4 has-text-weight-bold">
-           Create Mock APIs in seconds and increase developers productivity
+          <h2 class="subtitle has-text-dark is-size-3 has-text-weight-bold">
+           Create Mock APIs in seconds
           </h2>
           <b-button type="is-light" @click="openApp">Try Now</b-button>
         </div>
