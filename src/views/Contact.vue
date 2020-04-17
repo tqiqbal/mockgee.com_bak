@@ -9,7 +9,7 @@
               <b-input v-model="name"></b-input>
             </b-field>
 
-            <b-field label="Email" message="This email is invalid">
+            <b-field label="Email">
               <b-input type="email" v-model="email" maxlength="30"></b-input>
             </b-field>
 
@@ -84,7 +84,7 @@ export default {
        Name: ${this.name}
        Email: ${this.email}
        Message: ${this.message}
-       `;
+       `
       try {
         const result = await axios.post(this.apiURL, {
           message: messageBody,
@@ -93,11 +93,11 @@ export default {
         if (result.data == "success") {
           this.$router.push("Done");
         } else {
-          this.error = result.data
+          this.errors.push(result.data)
         }
         this.isLoading = false
       } catch (error) {
-        this.error = error.message
+        this.errors.push(error.message)
         this.isLoading = false
       }
     },
