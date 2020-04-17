@@ -10,7 +10,7 @@
           <h2 class="subtitle has-text-dark is-size-3 has-text-weight-bold">
            Create Mock APIs in seconds
           </h2>
-          <b-button type="is-light" @click="openApp">Try Now</b-button>
+          <b-button type="is-light is-large" @click="openApp">Try it free</b-button>
         </div>
         <div class="column">
           <div class="image" style="width: 400px; heigth: 200px;text-align: right;">
