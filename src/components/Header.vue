@@ -2,10 +2,11 @@
     <b-navbar>
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                <img
+                <h1 class="title is-size-3 has-text-dark has-text-weight-medium">mockgee</h1>
+                <!-- <img
                     src="https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/logo.png"
                     alt="MS Office generated logo"
-                >
+                > -->
             </b-navbar-item>
         </template>
         <template slot="start">

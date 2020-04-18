@@ -2,8 +2,11 @@
   <section class="section contact">
     <div class="container">
       <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
+      <b-message v-if="success" type="is-info" aria-close-label="Close message">
+            Your message has been successfully submitted to concern person. We will shortly get back to you.
+      </b-message>
       <div class="columns is-mobile is-centered">
-        <div class="column is-half-desktop">
+        <div class="column is-one-third-desktop">
           <div class="form">
             <b-field label="Name">
               <b-input v-model="name"></b-input>
@@ -79,7 +82,8 @@ export default {
       errors: [],
       tac: false,
       sitekey: "6LeOg-oUAAAAAJKrgoZyuaV4Yry_ccsMKAd-i9A3",
-      rcURL: "https://pcr0h6j1ck.execute-api.ap-south-1.amazonaws.com/verifyReCaptcha"
+      rcURL: "https://pcr0h6j1ck.execute-api.ap-south-1.amazonaws.com/verifyReCaptcha",
+      success: false
     };
   },
   methods: {
@@ -97,15 +101,19 @@ export default {
           subject: "Mockgee Contact"
         });
         if (result.data == "success") {
-          this.$router.push("Done");
+          this.success = true
+          // reset fields value
+          this.name = ''
+          this.email = ''
+          this.message = ''
+          this.tac = false
         } else {
           this.errors.push(result.data)
         }
-        this.isLoading = false
       } catch (error) {
         this.errors.push(error.message)
-        this.isLoading = false
       }
+      this.isLoading = false
     },
     cancel() {
       this.$router.push('/')
@@ -140,11 +148,13 @@ export default {
       this.isLoading = true
       axios.post(this.rcURL, { token: response})
       .then(result => {
-        // console.log('reCaptcha result ->', result.data)
         if (result.data.success) this.submit()
         else this.errors.push(result.data['error-codes'][0])
       })
-      .catch(err => this.errors.push(err.message))
+      .catch(err => {
+        this.errors.push(err.message)
+        this.isLoading = false
+      })
     },
     onExpired: function () {
       console.log('Expired')
