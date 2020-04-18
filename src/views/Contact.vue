@@ -3,7 +3,7 @@
     <div class="container">
       <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
       <div class="columns is-mobile is-centered">
-        <div class="column is-half">
+        <div class="column is-half-desktop">
           <div class="form">
             <b-field label="Name">
               <b-input v-model="name"></b-input>
@@ -14,8 +14,8 @@
             </b-field>
 
             <b-field label="Contact type">
-              <b-select placeholder="Select a name">
-                <option v-for="option in data" :value="option.id" :key="option.id">{{ option }}</option>
+              <b-select placeholder="Select a name" v-model="contactType">
+                <option v-for="subject in subjects" :value="subject" :key="subject.id">{{ subject }}</option>
               </b-select>
             </b-field>
 
@@ -71,7 +71,8 @@ export default {
       name: "",
       email: "",
       message: "",
-      data: ["Technical", "Business"],
+      subjects: ["Technical", "Business"],
+      contactType: "Business",
       apiURL:
         "https://2h5umgq0c6.execute-api.eu-west-1.amazonaws.com/notifyByEmail",
       isLoading: false,
@@ -87,6 +88,7 @@ export default {
       const messageBody = `
        Name: ${this.name}
        Email: ${this.email}
+       Message Type: ${this.contactType}
        Message: ${this.message}
        `
       try {
