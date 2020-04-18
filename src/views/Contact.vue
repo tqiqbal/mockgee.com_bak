@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section contact">
     <div class="container">
       <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
       <div class="columns is-mobile is-centered">
@@ -31,7 +31,13 @@
 
             <div class="field is-grouped">
               <div class="control">
-                <button class="button is-primary" @click="submit">Submit</button>
+                <vue-recaptcha
+                   @verify="onVerify"
+                   @expired="onExpired"
+                  :sitekey="sitekey">
+                  <button class="button is-primary">Submit</button>
+                 </vue-recaptcha>
+                
               </div>
               <div class="control">
                 <button class="button is-link is-light" @click="cancel">Cancel</button>
@@ -55,7 +61,11 @@
 
 <script>
 import axios from "axios";
+import VueRecaptcha from 'vue-recaptcha';
 export default {
+  components: {
+    VueRecaptcha
+  },
   data() {
     return {
       name: "",
@@ -66,19 +76,13 @@ export default {
         "https://2h5umgq0c6.execute-api.eu-west-1.amazonaws.com/notifyByEmail",
       isLoading: false,
       errors: [],
-      tac: false
+      tac: false,
+      sitekey: "6LeOg-oUAAAAAJKrgoZyuaV4Yry_ccsMKAd-i9A3",
+      rcURL: "https://pcr0h6j1ck.execute-api.ap-south-1.amazonaws.com/verifyReCaptcha"
     };
   },
   methods: {
     async submit() {
-
-      // reset errors 
-      this.errors = []
-
-      let isValid = this.checkForm()
-      if (!isValid) return false
-
-      this.isLoading = true;
 
       const messageBody = `
        Name: ${this.name}
@@ -120,12 +124,40 @@ export default {
       if (!this.tac) {
         this.errors.push("Please agree to terms and condition.")
       }
+    },
+    onVerify: function (response) {
+      
+      // reset errors 
+      this.errors = []
+
+      let isValid = this.checkForm()
+      if (!isValid) {
+        this.isLoading = false
+        return false
+      }
+      this.isLoading = true
+      axios.post(this.rcURL, { token: response})
+      .then(result => {
+        // console.log('reCaptcha result ->', result.data)
+        if (result.data.success) this.submit()
+        else this.errors.push(result.data['error-codes'][0])
+      })
+      .catch(err => this.errors.push(err.message))
+    },
+    onExpired: function () {
+      console.log('Expired')
+    },
+    resetRecaptcha () {
+      this.$refs.recaptcha.reset() // Direct call reset method
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.contact {
+  min-height: 70vh;
+}
 li {
   color: red;
 }

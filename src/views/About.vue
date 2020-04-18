@@ -5,3 +5,11 @@
     </div>
   </section>
 </template>
+
+
+
+<style lang="scss" scoped>
+.about {
+ min-height: 70vh;
+}
+</style>
