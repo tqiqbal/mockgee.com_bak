@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="column image">
-              <AppImage src="https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/server2.png" width="300" height="150"/>
+              <AppImage :src="imgURL" width="300" height="150"/>
           </div>
         </div>
     </div>
@@ -20,9 +20,15 @@
 
 <script>
 import AppImage from '../../../components/images/AppImage'
+import config from '../../../config'
 export default {
   components: {
     AppImage
+  },
+  data() {
+    return {
+      imgURL: config.images.describeThree
+    }
   }
   
 }

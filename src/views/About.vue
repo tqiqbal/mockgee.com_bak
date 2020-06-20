@@ -1,26 +1,30 @@
 <template>
   <section class="section about">
     <div class="container">
-      <div class="columns">
+      <div class="columns is-vcentered">
         <div class="column">
-          <h1 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis qui ipsum itaque repellat temporibus quasi expedita omnis iste aperiam quis, vitae nobis harum blanditiis corrupti tempore error quisquam. Id, vel?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae numquam error quasi illo esse corporis architecto a assumenda ipsum neque odio, reprehenderit aut ducimus. Corporis consectetur sapiente nostrum ipsa soluta!
-          </p>
+          <h1 class="is-size-3 has-text-primary">This is page under development</h1>
         </div>
         <div class="column">
-          <h1 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis qui ipsum itaque repellat temporibus quasi expedita omnis iste aperiam quis, vitae nobis harum blanditiis corrupti tempore error quisquam. Id, vel?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae numquam error quasi illo esse corporis architecto a assumenda ipsum neque odio, reprehenderit aut ducimus. Corporis consectetur sapiente nostrum ipsa soluta!
-          </p>
+          <AppImge :src="imgURL" width="500" height="500" />
         </div>
       </div>
     </div>
   </section>
 </template>
 
+<script>
+import config from '../config'
+import AppImge from '../components/images/AppImage'
+export default {
+  components: { AppImge },
+  data() {
+    return {
+      imgURL: config.images.aboutUS
+    }
+  }
+}
+</script>
 
 
 <style lang="scss" scoped>

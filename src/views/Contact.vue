@@ -5,24 +5,28 @@
       <b-message v-if="success" type="is-info" aria-close-label="Close message">
             Your message has been successfully submitted to concern person. We will shortly get back to you.
       </b-message>
-      <div class="columns is-mobile is-centered">
-        <div class="column is-one-third-desktop">
+      <div class="columns">
+        <div class="column is-half">
+          <h1 class="is-size-2 has-text-grey-dark">Contact</h1>
+          <p>Please fill out the quick form and we will be in touch with you
+          lightening speed.</p>
+          <br>
+          <AppImage src="https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/mockgee_contact.png" width="400" height="200"/>
+        </div>
+        <div class="column">
           <div class="form">
-            <b-field label="Name">
+            <b-field label="Name" label-position="on-border">
               <b-input v-model="name"></b-input>
             </b-field>
 
-            <b-field label="Email">
-              <b-input type="email" v-model="email" maxlength="30"></b-input>
+            <b-field label="Email" label-position="on-border">
+              <b-input type="email" v-model="email"></b-input>
+            </b-field>
+            <b-field label="Subject" label-position="on-border">
+              <b-input v-model="subject"></b-input>
             </b-field>
 
-            <b-field label="Contact type">
-              <b-select placeholder="Select a name" v-model="contactType">
-                <option v-for="subject in subjects" :value="subject" :key="subject.id">{{ subject }}</option>
-              </b-select>
-            </b-field>
-
-            <b-field label="Message">
+            <b-field label="Message" label-position="on-border">
               <b-input type="textarea" v-model="message"></b-input>
             </b-field>
 
@@ -63,26 +67,24 @@
 </template>
 
 <script>
-import axios from "axios";
-import VueRecaptcha from 'vue-recaptcha';
+import axios from 'axios'
+import VueRecaptcha from 'vue-recaptcha'
+import config from '../config'
+import AppImage from '../components/images/AppImage'
 export default {
   components: {
-    VueRecaptcha
+    VueRecaptcha, AppImage
   },
   data() {
     return {
       name: "",
       email: "",
+      subject: "",
       message: "",
-      subjects: ["Technical", "Business"],
-      contactType: "Business",
-      apiURL:
-        "https://2h5umgq0c6.execute-api.eu-west-1.amazonaws.com/notifyByEmail",
       isLoading: false,
       errors: [],
       tac: false,
-      sitekey: "6LeOg-oUAAAAAJKrgoZyuaV4Yry_ccsMKAd-i9A3",
-      rcURL: "https://pcr0h6j1ck.execute-api.ap-south-1.amazonaws.com/verifyReCaptcha",
+      sitekey: config.reCaptcha.sitekey ,
       success: false
     };
   },
@@ -96,7 +98,7 @@ export default {
        Message: ${this.message}
        `
       try {
-        const result = await axios.post(this.apiURL, {
+        const result = await axios.post(config.apiURL, {
           message: messageBody,
           subject: "Mockgee Contact"
         });
@@ -119,7 +121,7 @@ export default {
       this.$router.push('/')
     },
     checkForm() {
-      if (this.name && this.email && this.message && this.tac) {
+      if (this.name && this.email && this.message && this.subject && this.tac) {
         return true;
       }
       if (!this.name) {
@@ -127,6 +129,9 @@ export default {
       }
       if (!this.email) {
         this.errors.push('Email required.')
+      }
+      if (!this.subject) {
+        this.errors.push('Subject required.')
       }
       if (!this.message) {
         this.errors.push('Message required.')
@@ -146,7 +151,7 @@ export default {
         return false
       }
       this.isLoading = true
-      axios.post(this.rcURL, { token: response})
+      axios.post(config.reCaptcha.URL, { token: response})
       .then(result => {
         if (result.data.success) this.submit()
         else this.errors.push(result.data['error-codes'][0])
@@ -169,6 +174,9 @@ export default {
 <style lang="scss" scoped>
 .contact {
   min-height: 70vh;
+}
+.form {
+  margin-top: 3%;
 }
 li {
   color: red;

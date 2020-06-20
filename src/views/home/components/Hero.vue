@@ -4,18 +4,19 @@
     <div class="container">
       <div class="columns">
         <div class="column hero-text">
-          <h1 class="title has-text-light is-bold is-size-1 has-text-weight-bold">
+          <h1 class="is-size-1 has-text-grey-dark is-uppercase">
            Mock APIs with Mockgee
           </h1>
-          <h2 class="subtitle has-text-dark is-size-3 has-text-weight-bold">
+          <h2 class="is-size-2 has-text-white">
            Create Mock APIs in seconds
           </h2>
-          <b-button type="is-light is-large" @click="openApp">Try it free</b-button>
+          <br>
+          <b-button type="is-light is-medium" @click="openApp">Try Mockgee cloud</b-button>
         </div>
         <div class="column">
           <div class="image" style="width: 400px; heigth: 200px;text-align: right;">
-            <AppImage src="https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/dev_productivity_transparent.png" 
-             alt="Hero"/>
+            <AppImage :src="imgURL" 
+             alt="Mockgee"/>
           </div>
         </div>
       </div>
@@ -27,10 +28,12 @@
 
 <script>
 import AppImage from '../../../components/images/AppImage'
+import config from '../../../config'
 export default {
   data() {
     return {
-      appURL: 'https://mockgee.herokuapp.com'
+      appURL: config.app.url,
+      imgURL: config.images.hero
     }
   },
   components: {
