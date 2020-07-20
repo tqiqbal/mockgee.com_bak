@@ -13,7 +13,7 @@ const config = {
     aboutUS: "https://s3-eu-west-1.amazonaws.com/mockgee.io/images/public/mockgee_profile.png"
   },
   app: {
-    url: "https://mockgee.herokuapp.com"
+    url: "https://cloud.mockgee.com"
   }
 }
 
